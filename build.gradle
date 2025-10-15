@@ -33,14 +33,14 @@ allprojects {
         appAndroidTargetSDK = 33
 
         gdxVersion = '1.11.0'
-        gdxControllersVersion = '2.2.4-SNAPSHOT'
+        gdxControllersVersion = '2.2.4'
     }
     version = appVersionName
 
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+        maven { url 'https://oss.sonatype.org/content/repositories' }
     }
 
 }
