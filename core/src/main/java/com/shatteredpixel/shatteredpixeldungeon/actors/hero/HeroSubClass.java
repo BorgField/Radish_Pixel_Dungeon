@@ -49,6 +49,10 @@ public enum HeroSubClass {
 	REDCARDINAL(HeroIcon.REDLORD),
 	DEAD_KNIGHT(HeroIcon.DEADKNIGHT),
 
+	//Moonlight Sub Class
+	BLADESHIELD_KNIGHT(HeroIcon.BERSERKER),
+	LITTLE_KNIGHT(HeroIcon.GLADIATOR),
+
 	//Never Used Duelist
 	CHAMPION(HeroIcon.CHAMPION),
 	MONK(HeroIcon.MONK);

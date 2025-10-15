@@ -128,7 +128,10 @@ public enum HeroClass {
 	HUNTRESS( HeroSubClass.SNIPER, HeroSubClass.WARDEN ),
 
 	//New Hero-Radish Pixel Dungeon
-	RECTOR( HeroSubClass.BATTLEPREIST, HeroSubClass.REDCARDINAL, HeroSubClass.DEAD_KNIGHT);
+	RECTOR( HeroSubClass.BATTLEPREIST, HeroSubClass.REDCARDINAL, HeroSubClass.DEAD_KNIGHT),
+	
+	//New Hero-Moonlight-Radish Pixel Dungeon
+	MOONLIGHT( HeroSubClass.BLADESHIELD_KNIGHT, HeroSubClass.LITTLE_KNIGHT);
 
 //	DUELIST( HeroSubClass.CHAMPION, HeroSubClass.MONK );
 
@@ -269,6 +272,10 @@ public enum HeroClass {
 			case RECTOR:
 				initRector( hero );
 				break;
+
+			case MOONLIGHT:
+				initMoonlight( hero );
+				break;
 		}
 
 		if (SPDSettings.quickslotWaterskin()) {
@@ -351,6 +358,24 @@ public enum HeroClass {
 		new ScrollOfIdentify().identify();
 		new PotionOfExperience().identify();
 		new ScrollOfRemoveCurse().identify();
+	}
+
+	private static void initMoonlight( Hero hero ) {
+
+		(hero.belongings.weapon = new WornShortsword()).identify();
+
+		WandOfMagicMissile wand = new WandOfMagicMissile();
+		wand.quantity(1).identify().collect();
+		Dagger dagger = new Dagger();
+		dagger.quantity(1).identify().collect();
+		Gloves gloves = new Gloves();
+		gloves.quantity(1).identify().collect();
+		MetalCross mata = new MetalCross();
+		mata.quantity(1).identify().collect();
+
+		new PotionOfHealing().identify();
+		new ScrollOfUpgrade().identify();
+		new ScrollOfIdentify().identify();
 	}
 
 	public String title() {
