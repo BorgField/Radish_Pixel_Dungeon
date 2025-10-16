@@ -130,7 +130,8 @@ public enum HeroClass {
 	RECTOR( HeroSubClass.BATTLEPREIST, HeroSubClass.REDCARDINAL, HeroSubClass.DEAD_KNIGHT),
 	
 	//New Hero-Moonlight-Radish Pixel Dungeon
-	MOONLIGHT( HeroSubClass.BLADESHIELD_KNIGHT, HeroSubClass.LITTLE_KNIGHT);
+	MOONLIGHT( HeroSubClass.BERSERKER, HeroSubClass.GLADIATOR );
+//	HeroSubClass.LITTLE_KNIGHT, HeroSubClass.DICE_MAGE, HeroSubClass.JUTTE_CHAMPION
 
 //	DUELIST( HeroSubClass.CHAMPION, HeroSubClass.MONK );
 
@@ -400,6 +401,8 @@ public enum HeroClass {
 				return new ArmorAbility[]{new SpectralBlades(), new NaturesPower(), new SpiritHawk()};
 			case RECTOR:
 				return new ArmorAbility[]{new Ratmogrify()};
+			case MOONLIGHT:
+				return new ArmorAbility[]{};
 		}
 	}
 
@@ -415,6 +418,8 @@ public enum HeroClass {
 				return Assets.Sprites.HUNTRESS;
 			case RECTOR:
 				return Assets.Sprites.RECTOR;
+			case MOONLIGHT:
+				return Assets.Sprites.MOONLIGHT;
 		}
 	}
 
@@ -430,6 +435,8 @@ public enum HeroClass {
 				return Assets.Splashes.HUNTRESS;
 			case RECTOR:
 				return Assets.Splashes.RECTOR;
+			case MOONLIGHT:
+				return Assets.Splashes.MOONLIGHT;
 		}
 	}
 	
@@ -445,6 +452,8 @@ public enum HeroClass {
 			case HUNTRESS:
 				return Badges.isUnlocked(Badges.Badge.UNLOCK_HUNTRESS);
 			case RECTOR:
+				return true;
+			case MOONLIGHT:
 				return true;
 			case WARRIOR: default:
 				return true;
