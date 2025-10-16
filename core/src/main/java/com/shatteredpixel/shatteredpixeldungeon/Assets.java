@@ -282,6 +282,7 @@ public class Assets {
 		public static final String ROGUE    = "splashes/rogue.jpg";
 		public static final String HUNTRESS = "splashes/huntress.jpg";
 		public static final String RECTOR  = "splashes/rector.jpg";
+		public static final String MOONLIGHT   = "splashes/moonlight.jpg";
 
 		public static final String SEWERS   = "splashes/sewers.jpg";
 		public static final String PRISON   = "splashes/prison.jpg";
@@ -298,7 +299,8 @@ public class Assets {
 		public static final String MAGE     = "sprites/mage.png";
 		public static final String ROGUE    = "sprites/rogue.png";
 		public static final String HUNTRESS = "sprites/huntress.png";
-		public static final String RECTOR  = "sprites/rector.png";
+		public static final String RECTOR   = "sprites/rector.png";
+		public static final String MOONLIGHT= "sprites/moonlight.png";
 		public static final String AVATARS  = "sprites/avatars.png";
 		public static final String FROG      = "sprites/frog.png";
 		public static final String AMULET   = "sprites/amulet.png";

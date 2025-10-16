@@ -50,8 +50,9 @@ public enum HeroSubClass {
 	DEAD_KNIGHT(HeroIcon.DEADKNIGHT),
 
 	//Moonlight Sub Class
-	BLADESHIELD_KNIGHT(HeroIcon.BERSERKER),
-	LITTLE_KNIGHT(HeroIcon.GLADIATOR),
+	LITTLE_KNIGHT(HeroIcon.BERSERKER),
+	DICE_MAGE(HeroIcon.GLADIATOR),
+	JUTTE_CHAMPION(HeroIcon.CHAMPION),
 
 	//Never Used Duelist
 	CHAMPION(HeroIcon.CHAMPION),

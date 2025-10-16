@@ -250,7 +250,26 @@ public enum Talent {
 	// 治愈圣启	无可侵犯	神灵之触
 	HOLY_SHOCKWAVE(428,4),GODHOOD(429,4),AVATAR(430,4),
 
-	ERROR(294,4);
+	ERROR(294,4),
+
+	/**
+	 * [MOONLIGHT TALENT]
+	 */
+	//MOONLIGHT T1
+	MOONLIGHT_T1_1(256), MOONLIGHT_T1_2(257), MOONLIGHT_T1_3(258), MOONLIGHT_T1_4(259),
+	//MOONLIGHT T2
+	MOONLIGHT_T2_1(260), MOONLIGHT_T2_2(261), MOONLIGHT_T2_3(262), MOONLIGHT_T2_4(263), MOONLIGHT_T2_5(264),
+	//MOONLIGHT T3
+	MOONLIGHT_T3_1(265, 3), MOONLIGHT_T3_2(266, 3),
+	MOONLIGHT_A3_1(267, 3), MOONLIGHT_A3_2(268, 3), MOONLIGHT_A3_3(269, 3),
+	MOONLIGHT_B3_1(270, 3), MOONLIGHT_B3_2(271, 3), MOONLIGHT_B3_3(272, 3),
+	MOONLIGHT_C3_1(273, 3), MOONLIGHT_C3_2(274, 3), MOONLIGHT_C3_3(275, 3),
+	//MOONLIGHT T4
+	MOONLIGHT_T4_1(276, 4), MOONLIGHT_T4_2(277, 4),
+	MOONLIGHT_A4_1(278, 4), MOONLIGHT_A4_2(279, 4),
+	MOONLIGHT_B4_1(280, 4), MOONLIGHT_B4_2(281, 4),
+	MOONLIGHT_C4_1(282, 4), MOONLIGHT_C4_2(283, 4),
+	;
 
 
 	public static class MagicRootDropped extends CounterBuff{{revivePersists = true;}};
@@ -990,6 +1009,9 @@ public enum Talent {
 			case RECTOR:
 				Collections.addAll(tierTalents, PRAYER_BEFORE_MEALS,MENTAL_TELEPATHY,RAIN_GRACE,DEVOTIONAL);
 				break;
+			case MOONLIGHT:
+				Collections.addAll(tierTalents, MOONLIGHT_T1_1, MOONLIGHT_T1_2, MOONLIGHT_T1_3, MOONLIGHT_T1_4);
+				break;
 		}
 		for (Talent talent : tierTalents){
 			if (replacements.containsKey(talent)){
@@ -1016,6 +1038,9 @@ public enum Talent {
 			case RECTOR:
 				Collections.addAll(tierTalents, BLESS_FOOD,SOUL_NOWIFI,LIGHT_STEP,GOD_BODY,NOHOPE_LANG);
 				break;
+			case MOONLIGHT:
+				Collections.addAll(tierTalents, MOONLIGHT_T2_1, MOONLIGHT_T2_2, MOONLIGHT_T2_3, MOONLIGHT_T2_4, MOONLIGHT_T2_5);
+				break;
 		}
 		for (Talent talent : tierTalents){
 			if (replacements.containsKey(talent)){
@@ -1041,6 +1066,9 @@ public enum Talent {
 				break;
 			case RECTOR:
 				Collections.addAll(tierTalents, ACT_GODPROGRESS, SMART_BLESSING);
+				break;
+			case MOONLIGHT:
+				Collections.addAll(tierTalents, MOONLIGHT_T3_1, MOONLIGHT_T3_2);
 				break;
 		}
 		for (Talent talent : tierTalents){
@@ -1103,6 +1131,15 @@ public enum Talent {
 			case DEAD_KNIGHT:
 				Collections.addAll(tierTalents,BLACK_LOVE,DEAD_POWER,EXP_IMPOTION);
 				break;
+			case LITTLE_KNIGHT:
+				Collections.addAll(tierTalents,MOONLIGHT_A3_1,MOONLIGHT_A3_2,MOONLIGHT_A3_3);
+				break;
+			case DICE_MAGE:
+				Collections.addAll(tierTalents,MOONLIGHT_B3_1,MOONLIGHT_B3_2,MOONLIGHT_B3_3);
+				break;
+			case JUTTE_CHAMPION:
+				Collections.addAll(tierTalents,MOONLIGHT_C3_1,MOONLIGHT_C3_2,MOONLIGHT_C3_3);
+				break;
 		}
 		for (Talent talent : tierTalents){
 			talents.get(2).put(talent, 0);
@@ -1163,6 +1200,9 @@ public enum Talent {
 			case RECTOR:
 				Collections.addAll(tierTalents,SUPERSTITION,VITAE_BOOST);
 				break;
+			case MOONLIGHT:
+				Collections.addAll(tierTalents, MOONLIGHT_T4_1, MOONLIGHT_T4_2);
+				break;
 		}
 		//tier 4
 		switch (subcls){
@@ -1207,6 +1247,18 @@ public enum Talent {
 
 			case DEAD_KNIGHT:
 				Collections.addAll(tierTalents,ERROR);
+				break;
+
+			case LITTLE_KNIGHT:
+				Collections.addAll(tierTalents,MOONLIGHT_A4_1,MOONLIGHT_A4_2);
+				break;
+
+			case DICE_MAGE:
+				Collections.addAll(tierTalents,MOONLIGHT_B4_1,MOONLIGHT_B4_2);
+				break;
+
+			case JUTTE_CHAMPION:
+				Collections.addAll(tierTalents,MOONLIGHT_C4_1,MOONLIGHT_C4_2);
 				break;
 		}
 		for (Talent talent : tierTalents){

@@ -476,6 +476,8 @@ public enum Icons {
 				return new ItemSprite(ItemSpriteSheet.SPIRIT_BOW);
 			case RECTOR:
 				return new ItemSprite(ItemSpriteSheet.HOLYANKH);
+			case MOONLIGHT:
+				return new ItemSprite(ItemSpriteSheet.ANKH);
 			default:
 				return null;
 		}

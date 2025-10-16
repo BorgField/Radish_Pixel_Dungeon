@@ -78,6 +78,9 @@ public class WndHeroInfo extends WndTabbed {
 			case RECTOR:
 				tabIcon = new ItemSprite(ItemSpriteSheet.HOLYANKH, null);
 				break;
+			case MOONLIGHT:
+				tabIcon = new ItemSprite(ItemSpriteSheet.ANKH, null);
+				break;
 		}
 
 		int finalHeight = MIN_HEIGHT;
@@ -216,6 +219,12 @@ public class WndHeroInfo extends WndTabbed {
 					icons = new Image[]{ new ItemSprite(ItemSpriteSheet.HOLYANKH),
 							new ItemSprite(ItemSpriteSheet.RING_SKYLUE),
 							new BuffIcon(BuffIndicator.CORRUPT, true),
+							new ItemSprite(ItemSpriteSheet.SCROLL_ISAZ)};
+					break;
+				case MOONLIGHT:
+					icons = new Image[]{ new ItemSprite(ItemSpriteSheet.ANKH),
+							new ItemSprite(ItemSpriteSheet.RING_SKYLUE),
+							new BuffIcon(BuffIndicator.HASTE, true),
 							new ItemSprite(ItemSpriteSheet.SCROLL_ISAZ)};
 					break;
 			}
