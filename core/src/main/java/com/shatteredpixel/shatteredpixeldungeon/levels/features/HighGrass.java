@@ -198,6 +198,17 @@ public class HighGrass {
 			}
 			
 		}
+
+		if ((ch instanceof Hero && ((Hero) ch).hasTalent(Talent.MOONLIGHT_T1_4))) {
+			float chance = 0.5f + (Dungeon.hero.pointsInTalent(Talent.MOONLIGHT_T1_4) * 0.25f);
+			if (Random.Float() < chance) {
+				for (Buff buff : Dungeon.hero.buffs()) {
+					if (buff.type == Buff.buffType.POSITIVE) {
+						buff.spendTime(1f);
+					}
+				}
+			}
+		}
 		
 		freezeTrample = false;
 		

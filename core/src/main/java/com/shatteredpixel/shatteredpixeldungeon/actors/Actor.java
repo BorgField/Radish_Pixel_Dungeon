@@ -25,6 +25,7 @@ import com.shatteredpixel.shatteredpixeldungeon.Dungeon;
 import com.shatteredpixel.shatteredpixeldungeon.Statistics;
 import com.shatteredpixel.shatteredpixeldungeon.actors.blobs.Blob;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Buff;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.Talent;
 import com.shatteredpixel.shatteredpixeldungeon.actors.mobs.Mob;
 import com.watabou.noosa.Game;
 import com.watabou.utils.Bundlable;
@@ -73,6 +74,10 @@ public abstract class Actor implements Bundlable {
 	//sends time, but the amount can be influenced
 	protected void spend( float time ) {
 		spendConstant( time );
+	}
+
+	public void spendTime(float time) {
+		spend(time);
 	}
 
 	public void spendToWhole(){

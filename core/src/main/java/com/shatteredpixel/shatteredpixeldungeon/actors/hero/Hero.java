@@ -137,7 +137,10 @@ import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.HornOfPlenty;
 import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.MasterThievesArmband;
 import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.TalismanOfForesight;
 import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.TimekeepersHourglass;
+import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.WheelChair;
 import com.shatteredpixel.shatteredpixeldungeon.items.bags.MagicalHolster;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.MysteryMeat;
+import com.shatteredpixel.shatteredpixeldungeon.items.food.PhantomMeat;
 import com.shatteredpixel.shatteredpixeldungeon.items.journal.Guidebook;
 import com.shatteredpixel.shatteredpixeldungeon.items.keys.CrystalKey;
 import com.shatteredpixel.shatteredpixeldungeon.items.keys.GoldenKey;
@@ -342,13 +345,20 @@ public class Hero extends Char {
 		float multiplier = RingOfMight.HTMultiplier(this);
 		HT = Math.round(multiplier * HT);
 
-
 		if (buff(ElixirOfMight.HTBoost.class) != null){
 			HT += buff(ElixirOfMight.HTBoost.class).boost();
 		}
 
 		if (buff(Sprouted_Potato.Potato_Poison.class) != null){
 			HT -= buff(Sprouted_Potato.Potato_Poison.class).level();
+		}
+
+		if(hero.heroClass == HeroClass.MOONLIGHT){
+			if (hero.hasTalent(Talent.MOONLIGHT_T2_2)){
+				HT += (1+lvl) * (hero.pointsInTalent(Talent.MOONLIGHT_T2_2) - 1);
+			}else {
+				HT -= 2+(lvl-1);
+			}
 		}
 
 		if (boostHP){
@@ -2318,6 +2328,10 @@ public class Hero extends Char {
 			}
 			if (speedAdj*speed>4f && pointsInTalent(Talent.STORM_RUSH)>3 ) Buff.affect(this, Levitation.class,1f);
 
+			if (buff(WheelChair.wheelRecharge.class) != null) {
+				buff(WheelChair.wheelRecharge.class).gainStack();
+			}
+
 			sprite.move(pos, step);
 			move(step);
 
@@ -2436,6 +2450,31 @@ public class Hero extends Char {
 				if(belief != null){
 					belief.getBelief(superstitionCounter.briefRet(exp));
 				}
+			}
+		}
+
+		if (hero.hasTalent(Talent.MOONLIGHT_T1_1) && hero != null){
+			Talent.HuntExperienceCount hunt = Buff.affect(hero, Talent.HuntExperienceCount.class);
+			hunt.countUp(1);
+			int max = 25 - 5*hero.pointsInTalent(Talent.MOONLIGHT_T1_1);
+			if( hunt.count() >= max){
+			// 检查是否达到15
+				MysteryMeat meat = new MysteryMeat();
+				if(Challenges.isItemBlocked(meat)) {
+					GLog.w(Messages.get(this, "item_blocked"));
+					return;
+				}
+				boolean collected = meat.collect();
+				meat.identify();
+				if(collected) {
+					GLog.p(Messages.get(Talent.class, "meat_get"));
+					Sample.INSTANCE.play(Assets.Sounds.ITEM);
+					GameScene.pickUp(meat, hero.pos);
+				} else {
+					meat.doDrop(hero);
+				}
+
+			hunt.countDown(max);
 			}
 		}
 

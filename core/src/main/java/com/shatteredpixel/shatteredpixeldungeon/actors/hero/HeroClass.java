@@ -31,6 +31,9 @@ import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Buff;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.rector.Belief;
 import com.shatteredpixel.shatteredpixeldungeon.actors.hero.abilities.ArmorAbility;
 import com.shatteredpixel.shatteredpixeldungeon.actors.hero.abilities.Ratmogrify;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.abilities.duelist.Challenge;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.abilities.duelist.ElementalStrike;
+import com.shatteredpixel.shatteredpixeldungeon.actors.hero.abilities.duelist.Feint;
 import com.shatteredpixel.shatteredpixeldungeon.actors.hero.abilities.huntress.NaturesPower;
 import com.shatteredpixel.shatteredpixeldungeon.actors.hero.abilities.huntress.SpectralBlades;
 import com.shatteredpixel.shatteredpixeldungeon.actors.hero.abilities.huntress.SpiritHawk;
@@ -74,6 +77,13 @@ import com.shatteredpixel.shatteredpixeldungeon.items.Waterskin;
 import com.shatteredpixel.shatteredpixeldungeon.items.alive.SeedOfCard;
 import com.shatteredpixel.shatteredpixeldungeon.items.alive.StoneOfCard;
 import com.shatteredpixel.shatteredpixeldungeon.items.armor.ClothArmor;
+import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.WheelChair;
+import com.shatteredpixel.shatteredpixeldungeon.items.lagacyItem.LunarCorona;
+import com.shatteredpixel.shatteredpixeldungeon.items.lagacyItem.Showdarker;
+import com.shatteredpixel.shatteredpixeldungeon.items.lagacyItem.Starlight;
+import com.shatteredpixel.shatteredpixeldungeon.items.lagacyItem.Sunless;
+import com.shatteredpixel.shatteredpixeldungeon.items.lagacyItem.Turtleir;
+import com.shatteredpixel.shatteredpixeldungeon.items.lagacyItem.Wastelandew;
 import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.CloakOfShadows;
 import com.shatteredpixel.shatteredpixeldungeon.items.artifacts.MagneticCrown;
 import com.shatteredpixel.shatteredpixeldungeon.items.bags.MagicalHolster;
@@ -115,6 +125,7 @@ import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.MetalCross;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.PneumFistGloves;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.ShadowBooks;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.melee.WornShortsword;
+import com.shatteredpixel.shatteredpixeldungeon.items.weapon.missiles.Perfidy;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.missiles.ThrowingKnife;
 import com.shatteredpixel.shatteredpixeldungeon.items.weapon.missiles.ThrowingStone;
 import com.shatteredpixel.shatteredpixeldungeon.messages.Messages;
@@ -131,7 +142,7 @@ public enum HeroClass {
 	RECTOR( HeroSubClass.BATTLEPREIST, HeroSubClass.REDCARDINAL, HeroSubClass.DEAD_KNIGHT),
 	
 	//New Hero-Moonlight-Radish Pixel Dungeon
-	MOONLIGHT( HeroSubClass.BERSERKER, HeroSubClass.GLADIATOR );
+	MOONLIGHT( HeroSubClass.LITTLE_KNIGHT, HeroSubClass.DICE_MAGE, HeroSubClass.JUTTE_CHAMPION );
 //	HeroSubClass.LITTLE_KNIGHT, HeroSubClass.DICE_MAGE, HeroSubClass.JUTTE_CHAMPION
 
 //	DUELIST( HeroSubClass.CHAMPION, HeroSubClass.MONK );
@@ -145,9 +156,6 @@ public enum HeroClass {
 
 	private static void doChallengeSpawn() {
 		new ChallengeBag().collect();
-
-		//TODO
-		new MagneticCrown().identify().collect();
 
 		new DictBook().collect();
 		new EchoplexHammer().collect();
@@ -362,8 +370,11 @@ public enum HeroClass {
 	}
 
 	private static void initMoonlight( Hero hero ) {
-
+		hero.HP = 18; hero.HT = 18;
 		(hero.belongings.weapon = new WornShortsword()).identify();
+		WheelChair wheelchair = new WheelChair();
+		(hero.belongings.artifact = wheelchair).identify();
+		hero.belongings.artifact.activate( hero );
 
 		WandOfMagicMissile wand = new WandOfMagicMissile();
 		wand.quantity(1).identify().collect();
@@ -441,6 +452,8 @@ public enum HeroClass {
 				return Assets.Splashes.HUNTRESS;
 			case RECTOR:
 				return Assets.Splashes.RECTOR;
+			case MOONLIGHT:
+				return Assets.Splashes.MOONLIGHT;
 		}
 	}
 	
@@ -456,6 +469,8 @@ public enum HeroClass {
 			case HUNTRESS:
 				return Badges.isUnlocked(Badges.Badge.UNLOCK_HUNTRESS);
 			case RECTOR:
+				return true;
+			case MOONLIGHT:
 				return true;
 			case WARRIOR: default:
 				return true;

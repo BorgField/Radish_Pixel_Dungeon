@@ -31,6 +31,7 @@ import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Buff;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.CounterBuff;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.FlavourBuff;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Haste;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.WeaponControl;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.PhysicalEmpower;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Recharging;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.RevealedArea;
@@ -551,6 +552,12 @@ public enum Talent {
 			Dungeon.hero.superstitionCounter = new Hero.SuperstitionCounter();
 		}
 		//
+		if (talent == MOONLIGHT_T2_2 && hero.pointsInTalent(MOONLIGHT_T2_2) == 1){
+			hero.updateHT(true);
+		}
+		if (talent == MOONLIGHT_T2_2 && hero.pointsInTalent(MOONLIGHT_T2_2) == 2){
+			hero.updateHT(true);
+		}
 
 		if (talent == HERB_MIXTURE  &&hero.belongings.getItem(HerbMaker.class)==null){
 			Dungeon.level.drop(new HerbMaker(),Dungeon.hero.pos);
@@ -630,6 +637,7 @@ public enum Talent {
 
 	public static class CachedRationsDropped extends CounterBuff{{revivePersists = true;}};
 	public static class NatureBerriesDropped extends CounterBuff{{revivePersists = true;}};
+	public static class HuntExperienceCount extends CounterBuff{{revivePersists = true;}};
 
 	public static void onFoodEaten( Hero hero, float foodVal, Item foodSource ){
 		if (hero.hasTalent(HEARTY_MEAL)){
@@ -923,6 +931,13 @@ public enum Talent {
 			} else if (hero.buff(DeadlyFollowupTracker.class) != null
 					&& hero.buff(DeadlyFollowupTracker.class).object == enemy.id()){
 				dmg = Math.round(dmg * (1.0f + .08f*hero.pointsInTalent(DEADLY_FOLLOWUP)));
+			}
+		}
+
+		if (hero.hasTalent(MOONLIGHT_T1_3)) {
+			WeaponControl tracker = hero.buff(WeaponControl.class);
+			if (tracker != null && !(hero.belongings.attackingWeapon() instanceof MissileWeapon)) {
+				dmg += Random.IntRange(0, tracker.getDamage());
 			}
 		}
 

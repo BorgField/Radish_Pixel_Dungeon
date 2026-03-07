@@ -133,6 +133,7 @@ public class BuffIndicator extends Component {
 	public static final int TAI_CRIT    = 82;
 
 	public static final int WAND    	= 83;
+	public static final int MOONLIGHT  = 86;
 
 	public static final int BELIEF_LINK    	= 84;
 	public static final int BELIEF_DNOT    	= 85;

@@ -48,6 +48,14 @@ public class HeroIcon extends Image {
 	public static final int CHAMPION    = 8;
 	public static final int MONK        = 9;
 
+	public static final int PATLE   	= 10;
+	public static final int REDLORD     = 11;
+	public static final int DEADKNIGHT  = 12;
+
+	public static final int LITTLE_KNIGHT  = 13;
+	public static final int DICE_MAGE      = 14;
+	public static final int JUTTE_CHAMPION = 15;
+
 	//abilities
 	public static final int HEROIC_LEAP     = 16;
 	public static final int SHOCKWAVE       = 17;
@@ -74,13 +82,10 @@ public class HeroIcon extends Image {
 	public static final int SNIPERS_MARK    = 36;
 	public static final int WEAPON_SWAP     = 37;
 	public static final int MONK_ABILITIES  = 38;
+	public static final int CLERIC_SPELLS   = 39;
 
-	public static final int BLESS          = 39;
+	public static final int BLESS          = 40;
 
-	public static final int PATLE   	  = 10;
-	public static final int REDLORD       = 11;
-
-	public static final int DEADKNIGHT = 12;
 
 	public static final int END_BLESS = 13;
 

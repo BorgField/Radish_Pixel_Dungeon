@@ -175,6 +175,26 @@ public class WndHero extends WndTabbed {
 			infoButton.setRect(title.right(), 0, 16, 16);
 			add(infoButton);
 
+			IconButton tistButton = new IconButton(Icons.get(Icons.INFO)){
+				@Override
+				protected void onClick() {
+					super.onClick();
+					if (ShatteredPixelDungeon.scene() instanceof GameScene){
+						GameScene.show(new WndClericSpells(hero));
+					} else {
+						ShatteredPixelDungeon.scene().addToFront(new WndHeroInfo(hero.heroClass));
+					}
+				}
+
+				@Override
+				protected String hoverText() {
+					return Messages.titleCase(Messages.get(WndKeyBindings.class, "hero_info"));
+				}
+
+			};
+			tistButton.setRect(title.right(), 24, 16, 16);
+			add(tistButton);
+
 			pos = title.bottom() + 2*GAP;
 
 			int strBonus = hero.STR() - hero.STR;

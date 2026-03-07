@@ -31,6 +31,7 @@ import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Bless;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.BlessAWP;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Buff;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Degrade;
+import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.WeaponControl;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Haste;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Recharging;
 import com.shatteredpixel.shatteredpixeldungeon.actors.buffs.Regeneration;
@@ -120,6 +121,39 @@ public class MeleeWeapon extends Weapon {
 	}
 
 	//leave null for no targeting
+	@Override
+	public boolean doEquip(Hero hero) {
+		if (super.doEquip(hero)){
+			if(Dungeon.hero.hasTalent(Talent.MOONLIGHT_T1_3)){
+				Buff.affect(hero, WeaponControl.class);
+			}
+			ActionIndicator.refresh();
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean equipSecondary(Hero hero) {
+		if (super.equipSecondary(hero)){
+			ActionIndicator.refresh();
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public boolean doUnequip(Hero hero, boolean collect, boolean single) {
+		if(Dungeon.hero.hasTalent(Talent.MOONLIGHT_T1_3)){
+			Buff.detach(hero, WeaponControl.class);
+		}
+		if (super.doUnequip(hero, collect, single)){
+			ActionIndicator.refresh();
+			return true;
+		}
+		return false;
+	}
+
 	public String targetingPrompt(){
 		return null;
 	}
