@@ -51,11 +51,9 @@ public class HeroIcon extends Image {
 	public static final int PATLE   	= 10;
 	public static final int REDLORD     = 11;
 	public static final int DEADKNIGHT  = 12;
-
-	public static final int LITTLE_KNIGHT  = 13;
-	public static final int DICE_MAGE      = 14;
-	public static final int JUTTE_CHAMPION = 15;
-
+	public static final int END_BLESS = 13;
+	public static final int SHADOW = 14;
+	public static final int POSSESSION = 15;
 	//abilities
 	public static final int HEROIC_LEAP     = 16;
 	public static final int SHOCKWAVE       = 17;
@@ -86,11 +84,11 @@ public class HeroIcon extends Image {
 
 	public static final int BLESS          = 40;
 
+	public static final int LITTLE_KNIGHT  = 41;
+	public static final int DICE_MAGE      = 42;
+	public static final int JUTTE_CHAMPION = 43;
 
-	public static final int END_BLESS = 13;
 
-	public static final int SHADOW = 14;
-	public static final int POSSESSION = 15;
 
 	public HeroIcon(HeroSubClass subCls){
 		super( Assets.Interfaces.HERO_ICONS );
